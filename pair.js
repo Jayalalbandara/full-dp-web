@@ -1,21 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const { default: makeWASocket, useMultiFileAuthState, delay, makeCacheableSignalKeyStore } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, delay } = require("@whiskeysockets/baileys");
 const pino = require("pino");
-const fs = require('fs');
 
 router.get('/', async (req, res) => {
     const number = req.query.number;
-    if(!number) return res.send({error: "Number is required"});
+    if(!number) return res.send({error: "Number eka danna!"});
 
     const { state, saveCreds } = await useMultiFileAuthState('auth_info');
     
     try {
         let sock = makeWASocket({
-            auth: {
-                creds: state.creds,
-                keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" })),
-            },
+            auth: state,
             printQRInTerminal: false,
             logger: pino({ level: "fatal" }),
             browser: ["RANUMITHA-X-MD", "Chrome", "1.0.0"]
@@ -28,14 +24,8 @@ router.get('/', async (req, res) => {
         }
 
         sock.ev.on('creds.update', saveCreds);
-        sock.ev.on('connection.update', (update) => {
-            const { connection } = update;
-            if (connection === "open") {
-                console.log("Connected for pairing...");
-            }
-        });
     } catch (err) {
-        res.send({ error: "Service Error" });
+        res.send({ error: "Connection Error" });
     }
 });
 
