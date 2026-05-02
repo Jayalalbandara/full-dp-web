@@ -1,4 +1,12 @@
 <div class="buttons">
-  <a href="/pair" class="btn"><i class="fas fa-link"></i> Pair Now</a>
-  <a href="/full-dp" class="btn"><i class="fas fa-image"></i> Full DP</a> <a href="https://wa.me/94762095304" class="btn"><i class="fas fa-user"></i> Contact Owner</a>
+  <a href="/pair" class="btn"><i class="fas fa-link"></i> Pair Now (Session)</a>
+  
+  <div style="background:rgba(255,255,255,0.1); padding:20px; border-radius:15px; margin-top:20px;">
+    <h3>Update Full DP</h3>
+    <form action="/upload-dp" method="POST" enctype="multipart/form-data">
+        <input type="text" name="number" placeholder="9477xxxxxxx" style="padding:10px; border-radius:5px;"><br><br>
+        <input type="file" name="image" accept="image/*"><br><br>
+        <button type="submit" class="btn">Update Profile Picture</button>
+    </form>
   </div>
+</div>
