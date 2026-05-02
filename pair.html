@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pairing Code</title>
+</head>
+<body>
+    <h1>Get Your Pairing Code</h1>
+    <input type="text" id="number" placeholder="9477xxxxxxx">
+    <button onclick="getCode()">Get Code</button>
+    <p id="display-code"></p>
+
+    <script>
+        async function getCode() {
+            const num = document.getElementById('number').value;
+            const res = await fetch(`/code?number=${num}`);
+            const data = await res.json();
+            if(data.code) {
+                document.getElementById('display-code').innerText = "Your Code: " + data.code;
+            } else {
+                alert("Error getting code");
+            }
+        }
+    </script>
+</body>
+</html>
