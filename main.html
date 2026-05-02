@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RANUMITHA-X-MD</title>
+    <style>
+        body { background: #0f172a; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        .box { background: #1e293b; padding: 20px; border-radius: 15px; margin: 20px auto; max-width: 400px; border: 1px solid #334155; }
+        .btn { background: #3b82f6; color: white; padding: 12px; border: none; border-radius: 8px; width: 100%; cursor: pointer; text-decoration: none; display: block; font-weight: bold; margin-top: 10px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <h1>RANUMITHA-X-MD</h1>
+    <div class="box">
+        <h3>Step 01: Link Account</h3>
+        <p>Mulinma account eka link karanna.</p>
+        <a href="/pair" class="btn">Get Pairing Code</a>
+    </div>
+    <div class="box">
+        <h3>Step 02: Full DP Update</h3>
+        <form action="/upload-dp" method="POST" enctype="multipart/form-data">
+            <input type="text" name="number" placeholder="9477xxxxxxx" required>
+            <input type="file" name="image" accept="image/*" required>
+            <button type="submit" class="btn">Update & Auto Logout</button>
+        </form>
+    </div>
+</body>
+</html>
